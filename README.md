@@ -1,4 +1,4 @@
-Alles klar, dann machen wir es kurz und knackig ohne den ganzen Code-Block.
+
 
 Wenn du das README als reinen Text bei GitHub erstellen willst, kannst du diesen Text hier nehmen. Er ist übersichtlich und erklärt alles Wichtige:
 
