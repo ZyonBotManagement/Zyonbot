@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zyon Management System</title>
+    <meta name="description" content="Zyon Management System - Das automatisierte, sichere und professionelle Discord-Bot-System für High-End Rollenspiel- und Community-Server.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    <div id="toast" class="toast" data-lang-de="Befehl in Zwischenablage kopiert!" data-lang-en="Command copied to clipboard!">Befehl in Zwischenablage kopiert!</div>
+
+    <button id="scrollTopBtn" class="scroll-top-btn" onclick="scrollToTop()" aria-label="Nach oben scrollen">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fa-solid fa-shield-halved text-blue"></i> Zyon<span>System</span>
+                <i class="fa-solid fa-shield-halved text-blue" aria-hidden="true"></i> Zyon<span>System</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#features" class="nav-link" onclick="highlightFeatures(event)" data-lang-de="Features" data-lang-en="Features">Features</a></li>
@@ -21,17 +28,21 @@
             
             <div class="nav-actions">
                 <div class="lang-dropdown">
-                    <button class="btn btn-lang" onclick="toggleDropdown()">
-                        <i class="fa-solid fa-globe"></i> <span id="current-lang">DE</span> <i class="fa-solid fa-chevron-down"></i>
+                    <button class="btn btn-lang" onclick="toggleDropdown()" aria-label="Sprache wechseln">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i> <span id="current-lang">DE</span> <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-content" id="langMenu">
                         <div onclick="changeLanguage('de')">Deutsch (DE)</div>
                         <div onclick="changeLanguage('en')">English (EN)</div>
                     </div>
                 </div>
+
+                <a href="https://discord.com/oauth2/authorize?client_id=1487870623727222784&permissions=8&integration_type=0&scope=bot+applications.commands" target="_blank" class="btn btn-nav btn-invite-nav" data-lang-de="<i class='fa-solid fa-robot'></i> Bot einladen" data-lang-en="<i class='fa-solid fa-robot'></i> Invite Bot">
+                    <i class="fa-solid fa-robot" aria-hidden="true"></i> Bot einladen
+                </a>
                 
-                <a href="https://discord.gg/YzbdmhFT8W" target="_blank" class="btn btn-nav" data-lang-de="Server beitreten" data-lang-en="Join Server">
-                    <i class="fa-brands fa-discord"></i> Server beitreten
+                <a href="https://discord.gg/YzbdmhFT8W" target="_blank" class="btn btn-nav" data-lang-de="<i class='fa-brands fa-discord'></i> Server beitreten" data-lang-en="<i class='fa-brands fa-discord'></i> Join Server">
+                    <i class="fa-brands fa-discord" aria-hidden="true"></i> Server beitreten
                 </a>
             </div>
         </div>
@@ -39,16 +50,16 @@
 
     <header class="hero">
         <div class="hero-content">
-            <div class="badge"><i class="fa-solid fa-circle-check text-blue"></i> <span data-lang-de="Online & Aktiv" data-lang-en="Online & Active">Online & Aktiv</span></div>
+            <div class="badge"><i class="fa-solid fa-circle-check text-blue" aria-hidden="true"></i> <span data-lang-de="Online & Aktiv" data-lang-en="Online & Active">Online & Aktiv</span></div>
             <h1 data-lang-de="High-Performance Discord Management" data-lang-en="High-Performance Discord Management">High-Performance <br><span class="text-gradient">Discord Management</span></h1>
-            <p distribution data-lang-de="Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server." data-lang-en="An automated, secure, and highly professional system built for high-end roleplay and community servers.">Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server.</p>
+            <p data-lang-de="Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server." data-lang-en="An automated, secure, and highly professional system built for high-end roleplay and community servers.">Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server.</p>
             
             <div class="hero-buttons">
-                <a href="https://discord.gg/YzbdmhFT8W" target="_blank" class="btn btn-primary" data-lang-de="Bot hinzufügen" data-lang-en="Add Bot">
-                    <i class="fa-solid fa-plus"></i> Bot hinzufügen
+                <a href="https://discord.com/oauth2/authorize?client_id=1487870623727222784&permissions=8&integration_type=0&scope=bot+applications.commands" target="_blank" class="btn btn-primary" data-lang-de="<i class='fa-solid fa-plus'></i> Bot hinzufügen" data-lang-en="<i class='fa-solid fa-plus'></i> Add Bot">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i> Bot hinzufügen
                 </a>
-                <a href="#features" class="btn btn-secondary" onclick="highlightFeatures(event)">
-                    <i class="fa-solid fa-layer-group"></i> Features
+                <a href="#features" class="btn btn-secondary" onclick="highlightFeatures(event)" data-lang-de="<i class='fa-solid fa-layer-group'></i> Features" data-lang-en="<i class='fa-solid fa-layer-group'></i> Features">
+                    <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Features
                 </a>
             </div>
         </div>
@@ -58,13 +69,13 @@
         <div class="features-container" id="featuresBox">
             <h2 class="section-title" data-lang-de="System-Module" data-lang-en="System Modules">System-Module</h2>
             <div class="grid">
-                <div class="card">
-                    <i class="fa-solid fa-ticket icon-box text-blue"></i>
+                <div class="card card-glow-blue">
+                    <i class="fa-solid fa-ticket icon-box text-blue" aria-hidden="true"></i>
                     <h3 data-lang-de="Support-Zentrale" data-lang-en="Support Hub">Support-Zentrale</h3>
                     <p data-lang-de="Professionelles Ticket-Struktursystem mit getrennten Fachbereichen und automatischer Protokollierung." data-lang-en="Professional ticket system with separated departments and automated transcription logging.">Professionelles Ticket-Struktursystem mit getrennten Fachbereichen und automatischer Protokollierung.</p>
                 </div>
-                <div class="card">
-                    <i class="fa-solid fa-user-shield icon-box text-blue"></i>
+                <div class="card card-glow-cyan">
+                    <i class="fa-solid fa-user-shield icon-box text-cyan" aria-hidden="true"></i>
                     <h3 data-lang-de="Sicherheits-Schutz" data-lang-en="Security Guard">Sicherheits-Schutz</h3>
                     <p data-lang-de="Globale Server-Verifikation zum Schutz vor unbefugten Bots, Trollen und automatisierten Angriffen." data-lang-en="Global server verification built to protect against unauthorized bots, trolls, and automated raids.">Globale Server-Verifikation zum Schutz vor unbefugten Bots, Trollen und automatisierten Angriffen.</p>
                 </div>
@@ -74,12 +85,17 @@
 
     <section id="commands" class="commands">
         <h2 class="section-title" data-lang-de="System-Dokumentation & Befehle" data-lang-en="System Documentation & Commands">System-Dokumentation & Befehle</h2>
-        <p class="section-desc" data-lang-de="Hier findest du eine vollständige, detaillierte Übersicht aller administrativen und interaktiven Befehle des Zyon-Systems." data-lang-en="Here you will find a complete, detailed overview of all administrative and interactive commands within the Zyon system.">Hier findest du eine vollständige, detaillierte Übersicht aller administrativen und interaktiven Befehle des Zyon-Systems.</p>
+        <p class="section-desc" data-lang-de="Hier findest du eine vollständige Übersicht. Klicke auf einen Befehlsnamen, um ihn sofort zu kopieren." data-lang-en="Here is a complete overview. Click on any command name to copy it instantly.">Hier findest du eine vollständige Übersicht. Klicke auf einen Befehlsnamen, um ihn sofort zu kopieren.</p>
+
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input type="text" id="cmdSearch" onkeyup="searchCommands()" placeholder="Befehle durchsuchen... / Search commands..." aria-label="Befehle durchsuchen">
+        </div>
 
         <div class="commands-list">
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/ticket</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/ticket</span>
                     <span class="badge-role team">User / Support Team</span>
                 </div>
                 <div class="command-body">
@@ -89,7 +105,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/ticket-setup</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/ticket-setup</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -99,7 +115,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/close</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/close</span>
                     <span class="badge-role team">Support Team</span>
                 </div>
                 <div class="command-body">
@@ -109,7 +125,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/giveaway</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/giveaway</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -119,7 +135,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/clear [Anzahl]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/clear</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -129,7 +145,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/dice</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/dice</span>
                     <span class="badge-role team">User / All</span>
                 </div>
                 <div class="command-body">
@@ -139,7 +155,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/serverinfo</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/serverinfo</span>
                     <span class="badge-role team">User / All</span>
                 </div>
                 <div class="command-body">
@@ -149,7 +165,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/userinfo [@User]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/userinfo</span>
                     <span class="badge-role team">User / All</span>
                 </div>
                 <div class="command-body">
@@ -159,7 +175,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/emojiid [Emoji]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/emojiid</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -169,7 +185,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/lock</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/lock</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -179,7 +195,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/unlock</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/unlock</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -189,7 +205,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/kick [@User] [Grund]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/kick</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -199,7 +215,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/ban [@User] [Grund]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/ban</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -209,7 +225,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/warn [@User] [Grund]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/warn</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -219,7 +235,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/warns [@User]</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/warns</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -229,7 +245,7 @@
 
             <div class="command-block">
                 <div class="command-header">
-                    <span class="cmd-name">/setup</span>
+                    <span class="cmd-name" onclick="copyCommand(this)">/setup</span>
                     <span class="badge-role alpha">Alpha Admin</span>
                 </div>
                 <div class="command-body">
@@ -242,11 +258,11 @@
     <section class="project-info-section">
         <div class="project-info-box">
             <h3 data-lang-de="Über das Zyon-Projekt" data-lang-en="About the Zyon Project">Über das Zyon-Projekt</h3>
-            <p data-lang-de="Das Zyon Management System ist eine hochgradig spezialisierte Automatisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen." data-lang-en="The Zyon Management System is a highly specialized automation suite for Discord, engineered for structuring, moderating, and safeguarding modern community networks.">Das Zyon Management System ist eine hochgradig spezialisierte Automatisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen.</p>
+            <p data-lang-de="Das Zyon Management System ist eine hochgradig spezialisierung Automatisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen." data-lang-en="The Zyon Management System is a highly specialized automation suite for Discord, engineered for structuring, moderating, and safeguarding modern community networks.">Das Zyon Management System ist eine hochgradig spezialisierte Automatisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen.</p>
             <div class="meta-grid">
                 <div class="meta-item">
                     <span class="meta-label" data-lang-de="Entwickler / Eigentümer" data-lang-en="Developer / Owner">Entwickler / Eigentümer</span>
-                    <span class="meta-value text-blue">@nowayimending </span>
+                    <span class="meta-value text-blue">@nowayimending</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label" data-lang-de="Veröffentlichung" data-lang-en="Release Date">Veröffentlichung</span>
@@ -272,33 +288,87 @@
         function changeLanguage(lang) {
             document.getElementById("current-lang").innerText = lang.toUpperCase();
             document.getElementById("langMenu").classList.remove("show");
+            
+            localStorage.setItem('zyon-preferred-lang', lang);
+
             const elements = document.querySelectorAll('[data-lang-de]');
             elements.forEach(el => {
-                if (lang === 'de') {
-                    el.innerHTML = el.getAttribute('data-lang-de');
+                const textDe = el.getAttribute('data-lang-de');
+                const textEn = el.getAttribute('data-lang-en');
+                const htmlContent = (lang === 'de') ? textDe : textEn;
+                
+                const existingIcon = el.querySelector('i');
+                if (existingIcon) {
+                    el.innerHTML = htmlContent;
+                    if (!el.querySelector('i')) {
+                        el.insertBefore(existingIcon, el.firstChild);
+                    }
                 } else {
-                    el.innerHTML = el.getAttribute('data-lang-en');
+                    el.innerHTML = htmlContent;
                 }
             });
         }
 
-        // Interaktiver Highlight-Effekt für die Features
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('zyon-preferred-lang') || 'de';
+            if (savedLang !== 'de') {
+                changeLanguage(savedLang);
+            }
+        });
+
         function highlightFeatures(event) {
-            event.preventDefault(); // Verhindert abrupten Sprung
-            
+            event.preventDefault(); 
             const targetSection = document.getElementById("features");
             const featuresBox = document.getElementById("featuresBox");
             
-            // Reibungsloses Scrollen zum Element
             targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Animation triggern (Klasse hinzufügen)
             featuresBox.classList.add("flash-highlight");
             
-            // Klasse nach dem Ende der Animation wieder entfernen, damit man es mehrfach drücken kann
             setTimeout(() => {
                 featuresBox.classList.remove("flash-highlight");
             }, 1000);
+        }
+
+        function searchCommands() {
+            const input = document.getElementById('cmdSearch').value.toLowerCase();
+            const commandBlocks = document.querySelectorAll('.command-block');
+
+            commandBlocks.forEach(block => {
+                const cmdName = block.querySelector('.cmd-name').innerText.toLowerCase();
+                const cmdDesc = block.querySelector('.command-body').innerText.toLowerCase();
+                
+                if (cmdName.includes(input) || cmdDesc.includes(input)) {
+                    block.style.display = "";
+                } else {
+                    block.style.display = "none";
+                }
+            });
+        }
+
+        // NEU: Klick-Kopier-Funktion für Befehle
+        function copyCommand(element) {
+            const cmdText = element.innerText;
+            navigator.clipboard.writeText(cmdText).then(() => {
+                const toast = document.getElementById("toast");
+                toast.classList.add("show-toast");
+                setTimeout(() => {
+                    toast.classList.remove("show-toast");
+                }, 2500);
+            });
+        }
+
+        // NEU: Scroll-Verhalten für den Back-To-Top Button
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                scrollTopBtn.classList.add("visible");
+            } else {
+                scrollTopBtn.classList.remove("visible");
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.onclick = function(event) {
