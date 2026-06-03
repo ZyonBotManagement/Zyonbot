@@ -19,21 +19,34 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fa-solid fa-shield-halved text-blue" aria-hidden="true"></i> Zyon<span>System</span>
+                <i class="fa-solid fa-shield-halved text-blue" aria-hidden="true"></i> Zyon&nbsp;<span>System</span>
             </div>
-            <ul class="nav-links">
+            
+            <button class="menu-toggle" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Menü öffnen/schließen">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#features" class="nav-link" onclick="highlightFeatures(event)" data-lang-de="Features" data-lang-en="Features">Features</a></li>
-                <li><a href="#commands" class="nav-link" data-lang-de="Befehle" data-lang-en="Commands">Befehle</a></li>
+                <li><a href="#commands" class="nav-link" onclick="closeMobileMenu()" data-lang-de="Befehle" data-lang-en="Commands">Befehle</a></li>
             </ul>
             
-            <div class="nav-actions">
+            <div class="nav-actions" id="navActions">
                 <div class="lang-dropdown">
                     <button class="btn btn-lang" onclick="toggleDropdown()" aria-label="Sprache wechseln">
-                        <i class="fa-solid fa-globe" aria-hidden="true"></i> <span id="current-lang">DE</span> <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i> 
+                        <span id="current-lang">🇩🇪 DE</span> 
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-content" id="langMenu">
-                        <div onclick="changeLanguage('de')">Deutsch (DE)</div>
-                        <div onclick="changeLanguage('en')">English (EN)</div>
+                        <div id="lang-opt-de" onclick="changeLanguage('de')" class="lang-option">
+                            <span>🇩🇪 Deutsch (DE)</span>
+                            <i class="fa-solid fa-check check-icon" aria-hidden="true"></i>
+                        </div>
+                        <div id="lang-opt-en" onclick="changeLanguage('en')" class="lang-option">
+                            <span>🇬🇧 English (EN)</span>
+                            <i class="fa-solid fa-check check-icon" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
 
@@ -52,7 +65,7 @@
         <div class="hero-content">
             <div class="badge"><i class="fa-solid fa-circle-check text-blue" aria-hidden="true"></i> <span data-lang-de="Online & Aktiv" data-lang-en="Online & Active">Online & Aktiv</span></div>
             <h1 data-lang-de="High-Performance Discord Management" data-lang-en="High-Performance Discord Management">High-Performance <br><span class="text-gradient">Discord Management</span></h1>
-            <p data-lang-de="Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server." data-lang-en="An automated, secure, and highly professional system built for high-end roleplay and community servers.">Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server.</p>
+            <p data-lang-de="Ein automatisierte, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server." data-lang-en="An automated, secure, and highly professional system built for high-end roleplay and community servers.">Ein automatisiertes, sicheres und hochgradig professionelles System für High-End Rollenspiel- und Community-Server.</p>
             
             <div class="hero-buttons">
                 <a href="https://discord.com/oauth2/authorize?client_id=1487870623727222784&permissions=8&integration_type=0&scope=bot+applications.commands" target="_blank" class="btn btn-primary" data-lang-de="<i class='fa-solid fa-plus'></i> Bot hinzufügen" data-lang-en="<i class='fa-solid fa-plus'></i> Add Bot">
@@ -106,7 +119,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/ticket-setup</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Initialisiert das automatisierte Ticket-System in einem frei wählbaren Kanal. Der Bot sendet ein professionelles Embed-Interface mit interaktiven Buttons." data-lang-en="Initializes the automated ticket system in a channel of your choice. The bot sends a professional embed interface containing interactive buttons.">Initialisiert das automatisierte Ticket-System in einem frei wählbaren Kanal. Der Bot sendet ein professionelles Embed-Interface mit interaktiven Buttons.</p>
@@ -126,7 +139,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/giveaway</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Startet ein zeitgesteuertes Gewinnspiel direkt im Server. Der Bot erstellt ein interaktives Embed mit einem Button, über den User teilnehmen können." data-lang-en="Starts a time-controlled giveaway directly within the server. The bot creates an interactive embed with an entry button.">Startet ein zeitgesteuertes Gewinnspiel direkt im Server. Der Bot erstellt ein interaktives Embed mit einem Button, über den User teilnehmen können.</p>
@@ -136,7 +149,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/clear</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Löscht eine präzise Anzahl von Nachrichten aus dem aktuellen Textkanal (bis zu 100 Nachrichten gleichzeitig), um Chats nach Spam-Attacken sofort zu bereinigen." data-lang-en="Deletes a precise number of messages from the current text channel (up to 100 messages at once) to instantly wipe chat rooms after spam.">Löscht eine präzise Anzahl von Nachrichten aus dem aktuellen Textkanal (bis zu 100 Nachrichten gleichzeitig), um Chats nach Spam-Attacken sofort zu bereinigen.</p>
@@ -176,7 +189,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/emojiid</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Extrahiert die einzigartige, versteckte API-Identifikationsnummer (ID) eines benutzerdefinierten Server-Emojis für Konfigurationszwecke." data-lang-en="Extracts the unique, hidden API identification number (ID) of a custom server emoji for development/configuration purposes.">Extrahiert die einzigartige, versteckte API-Identifikationsnummer (ID) eines benutzerdefinierten Server-Emojis für Konfigurationszwecke.</p>
@@ -186,7 +199,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/lock</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Sperrt den aktuellen Textkanal augenblicklich für die Standard-Rolle (@everyone) bei plötzlichen Spam-Wellen oder Raids." data-lang-en="Instantly locks the current text channel for the standard role (@everyone) during sudden spam waves or raids.">Sperrt den aktuellen Textkanal augenblicklich für die Standard-Rolle (@everyone) bei plötzlichen Spam-Wellen oder Raids.</p>
@@ -196,7 +209,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/unlock</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Hebt die Kanalsperre auf und stellt die normalen Schreibberechtigungen für alle regulären Benutzer im Textkanal wieder her." data-lang-en="Lifts an active channel lockdown and restores standard write permissions for regular users.">Hebt die Kanalsperre auf und stellt die normalen Schreibberechtigungen für alle regulären Benutzer im Textkanal wieder her.</p>
@@ -206,7 +219,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/kick</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Wirft ein Mitglied mit sofortiger Wirkung aus dem Discord-Server. Der betroffene Benutzer kann über einen gültigen Link wieder beitreten." data-lang-en="Removes a member from the Discord server with immediate effect. The affected user retains the ability to rejoin via a link.">Wirft ein Mitglied mit sofortiger Wirkung aus dem Discord-Server. Der betroffene Benutzer kann über einen gültigen Link wieder beitreten.</p>
@@ -216,7 +229,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/ban</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Verbannt einen Benutzer permanent vom Server und blockiert die IP-Adresse, um ein Wiederbetreten mit Zweitkonten zu verhindern." data-lang-en="Permanently bans a user from the server and blocks their IP address to prevent them from rejoining with alt accounts.">Verbannt einen Benutzer permanent vom Server und blockiert die IP-Adresse, um ein Wiederbetreten mit Zweitkonten zu verhindern.</p>
@@ -226,7 +239,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/warn</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Erteilt einem Benutzer eine formelle Verwarnung wegen Fehlverhaltens und speichert diese permanent in der Systemdatenbank." data-lang-en="Issues a formal warning to a member for misconduct and logs the infraction into the database logs.">Erteilt einem Benutzer eine formelle Verwarnung wegen Fehlverhaltens und speichert diese permanent in der Systemdatenbank.</p>
@@ -236,7 +249,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/warns</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Fragt das digitale Sündenregister und alle aktiven Verwarnungen eines Spielers ab, um wiederholte Verstöße einzusehen." data-lang-en="Queries the digital infraction ledger and all active warnings of a player to evaluate repeat offenses.">Fragt das digitale Sündenregister und alle aktiven Verwarnungen eines Spielers ab, um wiederholte Verstöße einzusehen.</p>
@@ -246,7 +259,7 @@
             <div class="command-block">
                 <div class="command-header">
                     <span class="cmd-name" onclick="copyCommand(this)">/setup</span>
-                    <span class="badge-role alpha">Alpha Admin</span>
+                    <span class="badge-role alpha">Owner</span>
                 </div>
                 <div class="command-body">
                     <p data-lang-de="Das Herzstück der Bot-Konfiguration. Öffnet ein umfassendes Konfigurations-Menü zur Bindung von Log-Kanälen, Kategorien und Rollen." data-lang-en="The control panel of the entire bot configuration. Launches a comprehensive setup menu to bind log channels and roles.">Das Herzstück der Bot-Konfiguration. Öffnet ein umfassendes Konfigurations-Menü zur Bindung von Log-Kanälen, Kategorien und Rollen.</p>
@@ -258,7 +271,7 @@
     <section class="project-info-section">
         <div class="project-info-box">
             <h3 data-lang-de="Über das Zyon-Projekt" data-lang-en="About the Zyon Project">Über das Zyon-Projekt</h3>
-            <p data-lang-de="Das Zyon Management System ist eine hochgradig spezialisierung Automatisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen." data-lang-en="The Zyon Management System is a highly specialized automation suite for Discord, engineered for structuring, moderating, and safeguarding modern community networks.">Das Zyon Management System ist eine hochgradig spezialisierte Automatisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen.</p>
+            <p data-lang-de="Das Zyon Management System ist eine hochgradig spezialisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen." data-lang-en="The Zyon Management System is a highly specialized automation suite for Discord, engineered for structuring, moderating, and safeguarding modern community networks.">Das Zyon Management System ist eine hochgradig spezialisierung für Discord. Entwickelt für die Strukturierung, Moderation und Absicherung moderner Community-Strukturen.</p>
             <div class="meta-grid">
                 <div class="meta-item">
                     <span class="meta-label" data-lang-de="Entwickler / Eigentümer" data-lang-en="Developer / Owner">Entwickler / Eigentümer</span>
@@ -280,16 +293,67 @@
         <p>&copy; 2026 Zyon Management System. <span data-lang-de="Alle Rechte vorbehalten." data-lang-en="All rights reserved.">Alle Rechte vorbehalten.</span></p>
     </footer>
 
-    <script>
+<script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById("navLinks");
+            const navActions = document.getElementById("navActions");
+            const menuBtnIcon = document.querySelector("#mobileMenuBtn i");
+            
+            navLinks.classList.toggle("mobile-active");
+            navActions.classList.toggle("mobile-active");
+            
+            if (navLinks.classList.contains("mobile-active")) {
+                menuBtnIcon.classList.remove("fa-bars");
+                menuBtnIcon.classList.add("fa-xmark");
+            } else {
+                menuBtnIcon.classList.remove("fa-xmark");
+                menuBtnIcon.classList.add("fa-bars");
+            }
+        }
+
+        function closeMobileMenu() {
+            const navLinks = document.getElementById("navLinks");
+            const navActions = document.getElementById("navActions");
+            const menuBtnIcon = document.querySelector("#mobileMenuBtn i");
+            
+            navLinks.classList.remove("mobile-active");
+            navActions.classList.remove("mobile-active");
+            menuBtnIcon.classList.remove("fa-xmark");
+            menuBtnIcon.classList.add("fa-bars");
+        }
+
         function toggleDropdown() {
             document.getElementById("langMenu").classList.toggle("show");
+            
+            // Rotiert den kleinen Pfeil am Button leicht, wenn das Menü offen ist
+            const arrow = document.querySelector(".btn-lang .fa-chevron-down");
+            if(arrow) {
+                arrow.style.transition = "transform 0.3s ease";
+                if(document.getElementById("langMenu").classList.contains("show")) {
+                    arrow.style.transform = "rotate(180deg)";
+                } else {
+                    arrow.style.transform = "rotate(0deg)";
+                }
+            }
         }
 
         function changeLanguage(lang) {
-            document.getElementById("current-lang").innerText = lang.toUpperCase();
+            const langText = lang === 'de' ? '🇩🇪 DE' : '🇬🇧 EN';
+            document.getElementById("current-lang").innerText = langText;
+            
             document.getElementById("langMenu").classList.remove("show");
+            const arrow = document.querySelector(".btn-lang .fa-chevron-down");
+            if(arrow) arrow.style.transform = "rotate(0deg)";
             
             localStorage.setItem('zyon-preferred-lang', lang);
+
+            if (lang === 'de') {
+                document.getElementById("lang-opt-de").classList.add("active-lang");
+                document.getElementById("lang-opt-en").classList.remove("active-lang");
+            } else {
+                document.getElementById("lang-opt-en").classList.add("active-lang");
+                document.getElementById("lang-opt-de").classList.remove("active-lang");
+            }
 
             const elements = document.querySelectorAll('[data-lang-de]');
             elements.forEach(el => {
@@ -311,13 +375,12 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('zyon-preferred-lang') || 'de';
-            if (savedLang !== 'de') {
-                changeLanguage(savedLang);
-            }
+            changeLanguage(savedLang);
         });
 
         function highlightFeatures(event) {
             event.preventDefault(); 
+            closeMobileMenu();
             const targetSection = document.getElementById("features");
             const featuresBox = document.getElementById("featuresBox");
             
@@ -345,7 +408,6 @@
             });
         }
 
-        // NEU: Klick-Kopier-Funktion für Befehle
         function copyCommand(element) {
             const cmdText = element.innerText;
             navigator.clipboard.writeText(cmdText).then(() => {
@@ -357,7 +419,6 @@
             });
         }
 
-        // NEU: Scroll-Verhalten für den Back-To-Top Button
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
@@ -374,10 +435,12 @@
         window.onclick = function(event) {
             if (!event.target.matches('.btn-lang') && !event.target.matches('.btn-lang *')) {
                 const dropdowns = document.getElementsByClassName("dropdown-content");
+                const arrow = document.querySelector(".btn-lang .fa-chevron-down");
                 for (let i = 0; i < dropdowns.length; i++) {
                     let openDropdown = dropdowns[i];
                     if (openDropdown.classList.contains('show')) {
                         openDropdown.classList.remove('show');
+                        if(arrow) arrow.style.transform = "rotate(0deg)";
                     }
                 }
             }
