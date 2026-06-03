@@ -60,6 +60,9 @@ body {
     font-size: 22px;
     font-weight: 800;
     letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .logo span { color: var(--text-muted); font-weight: 400; }
 
@@ -81,6 +84,17 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+/* NEU: Menü-Toggle Button unsichtbar auf Desktop-Monitoren */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1100;
 }
 
 /* --- BUTTON SYSTEM --- */
@@ -122,8 +136,15 @@ body {
 }
 .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.08); }
 
-/* --- LANGUAGE DROPDOWN --- */
-.lang-dropdown { position: relative; display: inline-block; }
+
+
+/* --- LANGUAGE DROPDOWN & ANIMATION --- */
+
+
+.lang-dropdown { 
+    position: relative; 
+    display: inline-block; 
+}
 .btn-lang {
     background: transparent;
     border: none;
@@ -131,7 +152,82 @@ body {
     font-size: 14px;
     font-weight: 600;
     gap: 6px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
+.btn-lang:hover { 
+    color: var(--text-white); 
+    transform: translateY(-1px);
+}
+.btn-lang:active {
+    transform: translateY(0);
+}
+
+/* Dropdown-Basis mit Animations-Vorbereitung */
+.dropdown-content {
+    display: block; /* Auf block lassen, wir regeln die Anzeige über Opacity/Pointer-Events */
+    position: absolute;
+    right: 0;
+    top: 55px; /* Leicht nach unten versetzt für den Fly-In Effekt */
+    background-color: var(--bg-card);
+    min-width: 160px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    z-index: 10;
+    overflow: hidden;
+    
+    /* Die Animations-Trigger */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.2s ease, 
+                visibility 0.2s ease;
+    pointer-events: none; /* Verhindert Fehler beim Drüberfahren im unsichtbaren Zustand */
+}
+
+/* Wenn das Menü die Klasse .show bekommt, startet die Animation */
+.dropdown-content.show { 
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.lang-option {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+.lang-option:hover { 
+    background-color: rgba(255,255,255,0.03); 
+    color: var(--text-white);
+    padding-left: 20px; /* Minimaler, edler Einrück-Effekt beim Hovern */
+}
+
+.lang-option .check-icon {
+    display: none;
+    color: var(--color-cyan);
+    font-size: 11px;
+}
+
+.lang-option.active-lang {
+    color: var(--text-white) !important;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+.lang-option.active-lang .check-icon {
+    display: block;
+}
+
+
+
 .btn-lang:hover { color: var(--text-white); }
 .dropdown-content {
     display: none;
@@ -139,14 +235,19 @@ body {
     right: 0;
     top: 45px;
     background-color: var(--bg-card);
-    min-width: 140px;
+    min-width: 160px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     z-index: 1;
     overflow: hidden;
 }
-.dropdown-content div {
+
+.lang-option {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     color: var(--text-muted);
     padding: 12px 16px;
     font-size: 13px;
@@ -154,7 +255,22 @@ body {
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
 }
-.dropdown-content div:hover { background-color: rgba(255,255,255,0.02); color: var(--text-white); }
+.lang-option:hover { background-color: rgba(255,255,255,0.02); color: var(--text-white); }
+
+.lang-option .check-icon {
+    display: none;
+    color: var(--color-cyan);
+    font-size: 11px;
+}
+
+.lang-option.active-lang {
+    color: var(--text-white) !important;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+.lang-option.active-lang .check-icon {
+    display: block;
+}
+
 .show { display: block; }
 
 /* --- HERO SECTION --- */
@@ -204,7 +320,6 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* NEU: Moderne Glow Effekte für die Karten */
 .card-glow-blue:hover { 
     transform: translateY(-4px); 
     border-color: rgba(59, 130, 246, 0.3);
@@ -219,7 +334,6 @@ body {
 .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
 .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
 
-/* INTERAKTIVER FLASH-EFFEKT (Navbar Klick) */
 @keyframes flashBorder {
     0% { border-color: rgba(255, 255, 255, 0.02); box-shadow: 0 0 0 rgba(59, 130, 246, 0); }
     50% { border-color: var(--color-blue); box-shadow: 0 0 25px rgba(59, 130, 246, 0.25); }
@@ -227,42 +341,77 @@ body {
 }
 .flash-highlight { animation: flashBorder 1s ease-in-out; }
 
-/* --- COMMANDS DOKUMENTATION & SEARCH --- */
+/* --- COMMANDS --- */
 .commands { max-width: 900px; margin: 0 auto; padding: 100px 20px 60px 20px; }
 .section-desc { text-align: center; color: var(--text-muted); font-size: 16px; max-width: 600px; margin: -30px auto 30px auto; }
 
+/* --- SEARCH BAR UPDATE --- */
 .search-container {
-    max-width: 500px;
-    margin: 0 auto 40px auto;
+    max-width: 450px; /* Etwas kompakter */
+    margin: 0 auto 50px auto;
     position: relative;
 }
+
 .search-container input {
     width: 100%;
-    padding: 14px 20px 14px 45px;
-    background-color: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
+    padding: 12px 20px 12px 45px;
+    background-color: rgba(17, 20, 36, 0.6); /* Leicht transparent passend zur Navbar */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 30px; /* Schön abgerundet statt eckig */
     color: var(--text-white);
     font-family: var(--font-sans);
-    font-size: 15px;
+    font-size: 14px;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.3px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Der schicke Focus-Effekt: Breitet sich leicht aus und leuchtet cyan/blau */
 .search-container input:focus {
-    border-color: var(--color-blue);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+    border-color: rgba(6, 182, 212, 0.5);
+    background-color: rgba(17, 20, 36, 0.9);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), 
+                inset 0 0 10px rgba(6, 182, 212, 0.05);
+    transform: scale(1.02); /* Minimaler Zoom-Effekt beim Tippen */
 }
+
+/* Lupen-Icon farblich angepasst */
 .search-icon {
     position: absolute;
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
-    font-size: 16px;
+    font-size: 14px;
+    transition: color 0.3s ease;
 }
 
+/* Lupe leuchtet mit, wenn man ins Suchfeld klickt */
+.search-container input:focus + .search-icon {
+    color: var(--color-cyan);
+}
+/* ... (andere Suchschlitz-Styles) ... */
+
 .commands-list { display: flex; flex-direction: column; gap: 15px; }
-.command-block { background-color: var(--bg-card); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.02); overflow: hidden; }
+
+/* HIER ERSETZEN ODER HINZUFÜGEN: */
+.command-block { 
+    background-color: var(--bg-card); 
+    border-radius: 6px; 
+    border: 1px solid rgba(255, 255, 255, 0.02); 
+    overflow: hidden; 
+    /* Der neue sanfte Übergang */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Der neue coolere Leuchteffekt beim Drüberfahren */
+.command-block:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.15);
+}
+
 .command-header {
     background-color: rgba(0, 0, 0, 0.15);
     padding: 16px 20px;
@@ -271,8 +420,9 @@ body {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
+/* ... Rest der Datei bleibt wie er ist ... */
 
-/* NEU: Click-to-copy Styling für Namen */
+
 .cmd-name { 
     font-family: monospace; 
     font-size: 15px; 
@@ -295,7 +445,7 @@ body {
 .command-body { padding: 20px; }
 .command-body p { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
 
-/* --- NEU: TOAST BENACHRICHTIGUNG --- */
+/* --- TOAST --- */
 .toast {
     position: fixed;
     bottom: 30px;
@@ -318,7 +468,7 @@ body {
     opacity: 1;
 }
 
-/* --- NEU: SCROLL TO TOP BUTTON --- */
+/* --- SCROLL TO TOP BUTTON --- */
 .scroll-top-btn {
     position: fixed;
     bottom: 30px;
@@ -352,7 +502,7 @@ body {
     transform: translateY(0);
 }
 
-/* --- PROJEKT METADATEN SEKTION --- */
+/* --- METADATEN --- */
 .project-info-section { max-width: 900px; margin: 40px auto 80px auto; padding: 0 20px; }
 .project-info-box {
     background-color: var(--bg-card);
@@ -398,52 +548,76 @@ body {
     transform: translateY(-1px);
 }
 
-/* --- RESPONSIVE DESIGN (MEDIA QUERIES) --- */
+/* --- RESPONSIVE DESIGN & MOBILE OPTIMIZATION --- */
 @media (max-width: 900px) {
+    .menu-toggle {
+        display: block; /* Hamburger-Button auf Mobilgeräten einblenden */
+    }
+
     .nav-container {
-        flex-direction: column;
-        height: auto;
-        padding: 15px 20px;
-        gap: 15px;
+        padding: 0 20px;
+        height: 80px;
+        position: relative;
     }
-    body {
-        padding-top: 150px;
-    }
+
+    /* Menü-Links standardmäßig verstecken und mobil als Dropdown stylen */
     .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-darker);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 20px;
         gap: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
+
+    /* Actions (Buttons und Sprache) standardmäßig verstecken */
     .nav-actions {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 190px; /* Platziert unter den Nav-Links */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-darker);
+        padding: 0 20px 20px 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Klasse zum Einblenden über JavaScript */
+    .nav-links.mobile-active,
+    .nav-actions.mobile-active {
+        display: flex;
+    }
+
+    .nav-actions .lang-dropdown,
+    .nav-actions .btn {
         width: 100%;
         justify-content: center;
-        flex-wrap: wrap;
     }
-    .hero h1 {
-        font-size: 38px;
+
+    .dropdown-content {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 45px;
     }
-    .scroll-top-btn {
-        bottom: 20px;
-        right: 20px;
-    }
+
+    body { padding-top: 80px; }
+    .hero h1 { font-size: 38px; }
+    .scroll-top-btn { bottom: 20px; right: 20px; }
 }
 
 @media (max-width: 600px) {
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-    }
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-    .features-container {
-        padding: 40px 20px;
-    }
-    .section-title {
-        font-size: 26px;
-    }
-    .grid {
-        grid-template-columns: 1fr;
-    }
+    .hero-buttons { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto; }
+    .btn { width: 100%; justify-content: center; }
+    .features-container { padding: 40px 20px; }
+    .section-title { font-size: 26px; }
+    .grid { grid-template-columns: 1fr; }
 }
