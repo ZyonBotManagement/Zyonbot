@@ -86,7 +86,7 @@ body {
     gap: 15px;
 }
 
-/* NEU: Menü-Toggle Button unsichtbar auf Desktop-Monitoren */
+/* Menü-Toggle Button unsichtbar auf Desktop-Monitoren */
 .menu-toggle {
     display: none;
     background: none;
@@ -136,11 +136,7 @@ body {
 }
 .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.08); }
 
-
-
 /* --- LANGUAGE DROPDOWN & ANIMATION --- */
-
-
 .lang-dropdown { 
     position: relative; 
     display: inline-block; 
@@ -164,10 +160,10 @@ body {
 
 /* Dropdown-Basis mit Animations-Vorbereitung */
 .dropdown-content {
-    display: block; /* Auf block lassen, wir regeln die Anzeige über Opacity/Pointer-Events */
+    display: block;
     position: absolute;
     right: 0;
-    top: 55px; /* Leicht nach unten versetzt für den Fly-In Effekt */
+    top: 55px;
     background-color: var(--bg-card);
     min-width: 160px;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -176,17 +172,15 @@ body {
     z-index: 10;
     overflow: hidden;
     
-    /* Die Animations-Trigger */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px) scale(0.95);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                 opacity 0.2s ease, 
                 visibility 0.2s ease;
-    pointer-events: none; /* Verhindert Fehler beim Drüberfahren im unsichtbaren Zustand */
+    pointer-events: none;
 }
 
-/* Wenn das Menü die Klasse .show bekommt, startet die Animation */
 .dropdown-content.show { 
     opacity: 1;
     visibility: visible;
@@ -209,7 +203,7 @@ body {
 .lang-option:hover { 
     background-color: rgba(255,255,255,0.03); 
     color: var(--text-white);
-    padding-left: 20px; /* Minimaler, edler Einrück-Effekt beim Hovern */
+    padding-left: 20px;
 }
 
 .lang-option .check-icon {
@@ -225,53 +219,6 @@ body {
 .lang-option.active-lang .check-icon {
     display: block;
 }
-
-
-
-.btn-lang:hover { color: var(--text-white); }
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 45px;
-    background-color: var(--bg-card);
-    min-width: 160px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    z-index: 1;
-    overflow: hidden;
-}
-
-.lang-option {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    color: var(--text-muted);
-    padding: 12px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-.lang-option:hover { background-color: rgba(255,255,255,0.02); color: var(--text-white); }
-
-.lang-option .check-icon {
-    display: none;
-    color: var(--color-cyan);
-    font-size: 11px;
-}
-
-.lang-option.active-lang {
-    color: var(--text-white) !important;
-    background-color: rgba(255, 255, 255, 0.03);
-}
-.lang-option.active-lang .check-icon {
-    display: block;
-}
-
-.show { display: block; }
 
 /* --- HERO SECTION --- */
 .hero {
@@ -345,9 +292,9 @@ body {
 .commands { max-width: 900px; margin: 0 auto; padding: 100px 20px 60px 20px; }
 .section-desc { text-align: center; color: var(--text-muted); font-size: 16px; max-width: 600px; margin: -30px auto 30px auto; }
 
-/* --- SEARCH BAR UPDATE --- */
+/* --- SEARCH BAR --- */
 .search-container {
-    max-width: 450px; /* Etwas kompakter */
+    max-width: 450px;
     margin: 0 auto 50px auto;
     position: relative;
 }
@@ -355,10 +302,10 @@ body {
 .search-container input {
     width: 100%;
     padding: 12px 20px 12px 45px;
-    background-color: rgba(17, 20, 36, 0.6); /* Leicht transparent passend zur Navbar */
+    background-color: rgba(17, 20, 36, 0.6);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 30px; /* Schön abgerundet statt eckig */
+    border-radius: 30px;
     color: var(--text-white);
     font-family: var(--font-sans);
     font-size: 14px;
@@ -367,16 +314,14 @@ body {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Der schicke Focus-Effekt: Breitet sich leicht aus und leuchtet cyan/blau */
 .search-container input:focus {
     border-color: rgba(6, 182, 212, 0.5);
     background-color: rgba(17, 20, 36, 0.9);
     box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), 
                 inset 0 0 10px rgba(6, 182, 212, 0.05);
-    transform: scale(1.02); /* Minimaler Zoom-Effekt beim Tippen */
+    transform: scale(1.02);
 }
 
-/* Lupen-Icon farblich angepasst */
 .search-icon {
     position: absolute;
     left: 18px;
@@ -387,25 +332,20 @@ body {
     transition: color 0.3s ease;
 }
 
-/* Lupe leuchtet mit, wenn man ins Suchfeld klickt */
 .search-container input:focus + .search-icon {
     color: var(--color-cyan);
 }
-/* ... (andere Suchschlitz-Styles) ... */
 
 .commands-list { display: flex; flex-direction: column; gap: 15px; }
 
-/* HIER ERSETZEN ODER HINZUFÜGEN: */
 .command-block { 
     background-color: var(--bg-card); 
     border-radius: 6px; 
     border: 1px solid rgba(255, 255, 255, 0.02); 
     overflow: hidden; 
-    /* Der neue sanfte Übergang */
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-/* Der neue coolere Leuchteffekt beim Drüberfahren */
 .command-block:hover {
     transform: translateY(-2px);
     border-color: rgba(0, 242, 254, 0.4);
@@ -420,8 +360,6 @@ body {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
-/* ... Rest der Datei bleibt wie er ist ... */
-
 
 .cmd-name { 
     font-family: monospace; 
@@ -537,6 +475,25 @@ body {
     font-size: 13px;
 }
 
+.legal-links {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: var(--color-cyan);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.legal-links a:hover {
+    color: var(--text-white);
+}
+
 /* --- DISCORD INVITE BUTTON STYLE (NAVBAR) --- */
 .btn-invite-nav {
     background-color: #5865F2 !important;
@@ -548,10 +505,83 @@ body {
     transform: translateY(-1px);
 }
 
+/* --- LEGAL MODAL POPUPS (NEU) --- */
+.legal-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2500; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(5, 6, 10, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.legal-modal-content {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 8% auto; 
+    padding: 35px;
+    border-radius: 12px;
+    max-width: 680px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.legal-modal-close {
+    color: var(--text-muted);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    line-height: 20px;
+}
+.legal-modal-close:hover {
+    color: var(--text-white);
+}
+
+.legal-text-block h2 {
+    color: var(--text-white);
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-blue);
+    padding-bottom: 8px;
+    font-weight: 800;
+}
+
+.legal-text-block h3 {
+    color: var(--color-cyan);
+    font-size: 16px;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.legal-text-block p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.legal-text-block strong {
+    color: var(--text-white);
+}
+
 /* --- RESPONSIVE DESIGN & MOBILE OPTIMIZATION --- */
 @media (max-width: 900px) {
     .menu-toggle {
-        display: block; /* Hamburger-Button auf Mobilgeräten einblenden */
+        display: block;
     }
 
     .nav-container {
@@ -560,7 +590,6 @@ body {
         position: relative;
     }
 
-    /* Menü-Links standardmäßig verstecken und mobil als Dropdown stylen */
     .nav-links {
         display: none;
         flex-direction: column;
@@ -575,12 +604,11 @@ body {
         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 
-    /* Actions (Buttons und Sprache) standardmäßig verstecken */
     .nav-actions {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 190px; /* Platziert unter den Nav-Links */
+        top: 190px;
         left: 0;
         width: 100%;
         background-color: var(--bg-darker);
@@ -590,7 +618,6 @@ body {
         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 
-    /* Klasse zum Einblenden über JavaScript */
     .nav-links.mobile-active,
     .nav-actions.mobile-active {
         display: flex;
@@ -612,6 +639,7 @@ body {
     body { padding-top: 80px; }
     .hero h1 { font-size: 38px; }
     .scroll-top-btn { bottom: 20px; right: 20px; }
+    .legal-modal-content { margin: 15% auto; padding: 25px; }
 }
 
 @media (max-width: 600px) {
