@@ -291,9 +291,43 @@
 
     <footer class="footer">
         <p>&copy; 2026 Zyon Management System. <span data-lang-de="Alle Rechte vorbehalten." data-lang-en="All rights reserved.">Alle Rechte vorbehalten.</span></p>
+        <div class="legal-links">
+            <a href="#" onclick="openLegalModal('impressum'); return false;" data-lang-de="Impressum" data-lang-en="Legal Notice">Impressum</a>
+            <a href="#" onclick="openLegalModal('datenschutz'); return false;" data-lang-de="Datenschutzerklärung" data-lang-en="Privacy Policy">Datenschutzerklärung</a>
+        </div>
     </footer>
 
-<script>
+    <!-- --- POPUP MODAL FÜR RECHTLICHE TEXTE --- -->
+    <!-- --- POPUP MODAL FÜR RECHTLICHE TEXTE --- -->
+    <div id="legalModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="legal-modal-close" onclick="closeLegalModal()">&times;</span>
+            
+            <!-- Impressum Inhalt -->
+            <div id="legal-text-impressum" class="legal-text-block">
+                <div data-lang-de="<h2>Impressum</h2><p><strong>Angaben gemäß § 5 TMG:</strong></p><p>Hugo Schumacher<br>D, B. Flanaganstr. <br> 14195 </p><h3>Kontakt</h3><p>E-Mail: drevenj@gmail.com<br>Discord: @nowayimending</p><h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3><p>Hugo Schumacher<br>D, B. Flanaganstr </p><p><em>Hinweis: Dies ist eine rein private Website für das Discord-Bot-Projekt 'Zyon'. Es werden keine kommerziellen Absichten verfolgt.</em></p>" 
+                     data-lang-en="<h2>Legal Notice</h2><p><strong>Information according to § 5 TMG:</strong></p><p>Omid [Your Last Name]<br>[Your Street and Number]<br>[Your ZIP and City, Germany]</p><h3>Contact</h3><p>Email: [Your Email Address]<br>Discord: @nowayimending</p><h3>Responsible for Content according to § 55 Abs. 2 RStV</h3><p>Omid [Your Last Name]<br>[Your Address]</p><p><em>Note: This is a purely private website for the Discord bot project 'Zyon'. No commercial interests are pursued.</em></p>">
+                </div>
+            </div>
+
+            <!-- Datenschutz Inhalt mit vollständiger Belehrung -->
+            <div id="legal-text-datenschutz" class="legal-text-block">
+                <div data-lang-de="<h2>Datenschutzerklärung</h2><h3>1. Datenschutz auf einen Blick</h3><p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p><h3>2. Hosting durch GitHub Pages</h3><p>Diese Website wird auf Servern von GitHub Inc. (88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA) gehostet. Wenn Sie unsere Website aufrufen, erfasst GitHub automatisch Log-Dateien (u.a. IP-Adresse, Datum, Uhrzeit, Browsertyp). Dies ist technisch notwendig, um die Website sicher und stabil bereitzustellen.</p><h3>3. Datenerfassung auf dieser Website</h3><p><strong>Cookies &amp; Tracking:</strong> Diese Website verwendet keine Tracking-Cookies und analysiert Ihr Nutzungsverhalten nicht.</p><p><strong>Lokale Speicherung (LocalStorage):</strong> Diese Website speichert Ihre gewählte Spracheinstellung (DE/EN) lokal auf Ihrem Gerät, um die Seite beim nächsten Aufruf direkt richtig anzuzeigen.</p><h3>4. Belehrung über Ihre Rechte (Betroffenenrechte)</h3><p>Sie haben als von der Datenverarbeitung betroffene Person nach der DSGVO umfassende Rechte. Sie können diese jederzeit formlos ausüben:</p><p>• <strong>Recht auf Auskunft (Art. 15 DSGVO):</strong> Sie haben das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten.</p><p>• <strong>Recht auf Berichtigung oder Löschung (Art. 16 u. 17 DSGVO):</strong> Sie können die Berichtigung unrichtiger oder die Löschung Ihrer bei uns gespeicherten Daten verlangen.</p><p>• <strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu fordern, sofern gesetzliche Gründe dem nicht entgegenstehen.</p><p>• <strong>Recht auf Widerruf (Art. 7 Abs. 3 DSGVO):</strong> Einmal erteilte Einwilligungen in die Datenverarbeitung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</p><p>• <strong>Beschwerderecht bei der Aufsichtsbehörde (Art. 77 DSGVO):</strong> Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, steht Ihnen ein Beschwerderecht bei einer zuständigen Datenschutz-Aufsichtsbehörde zu.</p>" 
+                     data-lang-en="<h2>Privacy Policy</h2><h3>1. Privacy at a Glance</h3><p>The following notes provide a simple overview of what happens to your personal data when you visit this website.</p><h3>2. Hosting by GitHub Pages</h3><p>This website is hosted on servers owned by GitHub Inc. (88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA). When you access our site, GitHub automatically collects log files (including IP address, date, time, browser type). This is technically required to host the site safely and stably.</p><h3>3. Data Collection on this Website</h3><p><strong>Cookies &amp; Tracking:</strong> This website does not use tracking cookies and does not analyze user behavior.</p><p><strong>Local Storage:</strong> This website stores your selected language preference (DE/EN) locally on your device to display the page correctly on your next visit.</p><h3>4. Instruction on Your Rights (Data Subject Rights)</h3><p>As a data subject under the GDPR, you have extensive legal rights which you can exercise at any time without any formal requirements:</p><p>• <strong>Right to Access (Art. 15 GDPR):</strong> You have the right to receive information free of charge about the origin, recipient, and purpose of your stored personal data.</p><p>• <strong>Right to Rectification or Erasure (Art. 16 &amp; 17 GDPR):</strong> You can request the correction of incorrect data or the complete deletion of your stored data.</p><p>• <strong>Right to Restriction of Processing (Art. 18 GDPR):</strong> You have the right to request that the processing of your data be restricted, provided there are no legal grounds to the contrary.</p><p>• <strong>Right to Withdraw Consent (Art. 7 Abs. 3 GDPR):</strong> Any consent given to process data can be revoked by you at any time with effect for the future.</p><p>• <strong>Right to Lodge a Complaint (Art. 77 GDPR):</strong> If you believe that the processing of your data violates data protection laws, you have the right to lodge a complaint with a competent regulatory authority.</p>">
+                </div>
+            </div>
+
+            <!-- Copyright & Lizenz Inhalt -->
+            <div id="legal-text-copyright" class="legal-text-block">
+                <div data-lang-de="<h2>Copyright &amp; Rechtliches</h2><h3>Urheberrecht</h3><p>© 2026 Zyon Bot Projekt. Alle Rechte vorbehalten.</p><p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p><h3>Markenhinweise</h3><p>Discord ist eine eingetragene Marke von Discord Inc. Dieses Projekt steht in keiner offiziellen Verbindung zu Discord Inc. oder GitHub Inc.</p>" 
+                     data-lang-en="<h2>Copyright &amp; Legal</h2><h3>Copyright</h3><p>© 2026 Zyon Bot Project. All rights reserved.</p><p>The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright law require the written consent of the respective author or creator.</p><h3>Trademarks</h3><p>Discord is a registered trademark of Discord Inc. This project is not officially affiliated with Discord Inc. or GitHub Inc.</p>">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
         function toggleMobileMenu() {
             const navLinks = document.getElementById("navLinks");
             const navActions = document.getElementById("navActions");
@@ -325,7 +359,6 @@
         function toggleDropdown() {
             document.getElementById("langMenu").classList.toggle("show");
             
-            // Rotiert den kleinen Pfeil am Button leicht, wenn das Menü offen ist
             const arrow = document.querySelector(".btn-lang .fa-chevron-down");
             if(arrow) {
                 arrow.style.transition = "transform 0.3s ease";
@@ -419,6 +452,22 @@
             });
         }
 
+        /* --- RECHTLICHE MODALS FUNCTIONS --- */
+        function openLegalModal(type) {
+            document.getElementById("legalModal").style.display = "block";
+            if (type === 'impressum') {
+                document.getElementById("legal-text-impressum").style.display = "block";
+                document.getElementById("legal-text-datenschutz").style.display = "none";
+            } else {
+                document.getElementById("legal-text-impressum").style.display = "none";
+                document.getElementById("legal-text-datenschutz").style.display = "block";
+            }
+        }
+
+        function closeLegalModal() {
+            document.getElementById("legalModal").style.display = "none";
+        }
+
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
@@ -433,6 +482,10 @@
         }
 
         window.onclick = function(event) {
+            const modal = document.getElementById("legalModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
             if (!event.target.matches('.btn-lang') && !event.target.matches('.btn-lang *')) {
                 const dropdowns = document.getElementsByClassName("dropdown-content");
                 const arrow = document.querySelector(".btn-lang .fa-chevron-down");
