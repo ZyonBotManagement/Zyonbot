@@ -25,6 +25,7 @@ body {
     line-height: 1.6;
     padding-top: 80px;
     scroll-behavior: smooth;
+    width: 100%; /* FIX: Jetzt füllt der Body den gesamten Bildschirm aus! */
 }
 
 .text-blue { color: var(--color-blue); }
@@ -218,8 +219,7 @@ body {
 
 /* --- HERO SECTION --- */
 .hero {
-    max-width: 1300px;
-    margin: 0 auto;
+    width: 100%;
     padding: 120px 20px 80px 20px;
     display: flex;
     justify-content: center;
@@ -245,8 +245,10 @@ body {
 .hero-buttons { display: flex; justify-content: center; gap: 15px; }
 
 /* --- FEATURES SECTION --- */
-.features-section { max-width: 1300px; margin: 0 auto; padding: 60px 20px; }
+.features-section { width: 100%; padding: 60px 20px; }
 .features-container {
+    max-width: 1300px;
+    margin: 0 auto;
     background-color: var(--bg-darker);
     border-radius: 12px;
     padding: 60px 40px;
@@ -285,7 +287,7 @@ body {
 .flash-highlight { animation: flashBorder 1s ease-in-out; }
 
 /* --- COMMANDS --- */
-.commands { max-width: 900px; margin: 0 auto; padding: 100px 20px 60px 20px; }
+.commands { max-width: 1300px; margin: 0 auto; padding: 100px 20px 60px 20px; }
 .section-desc { text-align: center; color: var(--text-muted); font-size: 16px; max-width: 600px; margin: -30px auto 30px auto; }
 
 /* --- SEARCH BAR --- */
@@ -436,7 +438,7 @@ body {
 }
 
 /* --- METADATEN --- */
-.project-info-section { max-width: 900px; margin: 40px auto 80px auto; padding: 0 20px; }
+.project-info-section { max-width: 1300px; margin: 40px auto 80px auto; padding: 0 20px; }
 .project-info-box {
     background-color: var(--bg-card);
     border-radius: 8px;
@@ -502,7 +504,7 @@ body {
 
 /* --- LEGAL MODAL POPUPS --- */
 .legal-modal {
-    display: none; /* STANDARDMÄSSIG UNSICHTBAR - FIX FÜR DEIN LAYOUT */
+    display: none; 
     position: fixed; 
     z-index: 2500; 
     left: 0;
